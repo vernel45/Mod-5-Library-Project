@@ -3,6 +3,8 @@ function renderBooks() {
   console.log(booksWrapper);
   booksWrapper.innerHTML = `
   <div class="book__title">
+  <img class="book__img" src="./assets/cracking the coding interview.png
+" alt="Deep Work">
 Crack the Coding Interview
 </div>
 <div class="book__ratings">
