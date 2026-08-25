@@ -1,7 +1,8 @@
 function renderBooks() {
   const booksWrapper = document.querySelector(".books");
   console.log(booksWrapper);
-  booksWrapper.innerHTML = `<div class="book__title">
+  booksWrapper.innerHTML = `
+  <div class="book__title">
 Crack the Coding Interview
 </div>
 <div class="book__ratings">
@@ -14,7 +15,7 @@ Crack the Coding Interview
 <div class="book__price">
 <span class="book__price--normal">$59.95</span> $14.95
 </div>
-</div>`;
+`;
 }
 
 setTimeout(() => {
