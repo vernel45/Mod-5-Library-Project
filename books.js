@@ -1,11 +1,16 @@
-function renderBooks() {
+async function renderBooks() {
   const booksWrapper = document.querySelector(".books");
-  console.log(booksWrapper);
-  booksWrapper.innerHTML = `
+
+  const books = await getBooks();
+
+  books
+    .map((book) => {
+      return `<div class="book">
+      <figure class="book__img--wrapper">
+        <img class="book__img" src="${book[0].url}" alt="">
+      </figure>
   <div class="book__title">
-  <img class="book__img" src="./assets/cracking the coding interview.png
-" alt="Deep Work">
-Crack the Coding Interview
+${book[0].title}
 </div>
 <div class="book__ratings">
 <i class="fas fa-star"></i>
@@ -15,9 +20,11 @@ Crack the Coding Interview
 <i class="fas fa-star-half-alt"></i>
 </div>
 <div class="book__price">
-<span class="book__price--normal">$59.95</span> $14.95
-</div>
-`;
+<span class="book__price--normal">$${book[0].originalPrice}</span> $${book[0].salePrice}
+</div>`;
+    })
+    .join("");
+  booksWrapper.innerHTML = booksHTML;
 }
 
 setTimeout(() => {
