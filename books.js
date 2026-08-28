@@ -7,10 +7,10 @@ async function renderBooks() {
     .map((book) => {
       return `<div class="book">
       <figure class="book__img--wrapper">
-        <img class="book__img" src="${book[0].url}" alt="">
+        <img class="book__img" src="${books[0].url}" alt="">
       </figure>
   <div class="book__title">
-${book[0].title}
+${books[0].title}
 </div>
 <div class="book__ratings">
 <i class="fas fa-star"></i>
@@ -20,7 +20,7 @@ ${book[0].title}
 <i class="fas fa-star-half-alt"></i>
 </div>
 <div class="book__price">
-<span class="book__price--normal">$${book[0].originalPrice}</span> $${book[0].salePrice}
+<span class="book__price--normal">$${books[0].originalPrice}</span> $${books[0].salePrice}
 </div>`;
     })
     .join("");
@@ -63,7 +63,7 @@ function getBooks() {
         {
           id: 4,
           title: "The 10X Rule",
-          url: "assets/book-1.jpeg",
+          url: "assets/The 10X Rule.jpeg",
           originalPrice: 44,
           salePrice: 19,
           rating: 4.5,
@@ -71,7 +71,7 @@ function getBooks() {
         {
           id: 5,
           title: "Be Obsessed Or Be Average",
-          url: "assets/book-2.jpeg",
+          url: "assets/Be Obsessed or Be Average.jpeg",
           originalPrice: 32,
           salePrice: 17,
           rating: 4,
@@ -79,7 +79,7 @@ function getBooks() {
         {
           id: 6,
           title: "Rich Dad Poor Dad",
-          url: "assets/book-3.jpeg",
+          url: "Rich Dad Poor Dad.jpeg",
           originalPrice: 70,
           salePrice: 12.5,
           rating: 5,
@@ -87,7 +87,7 @@ function getBooks() {
         {
           id: 7,
           title: "Cashflow Quadrant",
-          url: "assets/book-4.jpeg",
+          url: "Cashflow Quadrant.jpeg",
           originalPrice: 11,
           salePrice: 10,
           rating: 4,
@@ -95,7 +95,7 @@ function getBooks() {
         {
           id: 8,
           title: "48 Laws of Power",
-          url: "assets/book-5.jpeg",
+          url: "48 Laws of Power.jpeg",
           originalPrice: 38,
           salePrice: 17.95,
           rating: 4.5,
@@ -103,7 +103,7 @@ function getBooks() {
         {
           id: 9,
           title: "The 5 Second Rule",
-          url: "assets/book-6.jpeg",
+          url: "The 5 Second Rule.jpeg",
           originalPrice: 35,
           salePrice: null,
           rating: 2,
@@ -111,7 +111,7 @@ function getBooks() {
         {
           id: 10,
           title: "Your Next Five Moves",
-          url: "assets/book-7.jpg",
+          url: "Your Next Five Moves.jpg",
           originalPrice: 40,
           salePrice: null,
           rating: 4,
@@ -119,7 +119,7 @@ function getBooks() {
         {
           id: 11,
           title: "Mastery",
-          url: "assets/book-8.jpeg",
+          url: "Mastery.jpeg",
           originalPrice: 30,
           salePrice: null,
           rating: 4.5,
