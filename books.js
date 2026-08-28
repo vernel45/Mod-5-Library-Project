@@ -3,7 +3,7 @@ async function renderBooks() {
 
   const books = await getBooks();
 
-  books
+  const booksHTML = books
     .map((book) => {
       return `<div class="book">
       <figure class="book__img--wrapper">
