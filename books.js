@@ -4,29 +4,39 @@ async function renderBooks() {
   const books = await getBooks();
 
   const booksHTML = books
-    .map((book) => {
-      return `<div class="book">
-      <figure class="book__img--wrapper">
-        <img class="book__img" src="${books[0].url}" alt="">
-      </figure>
-  <div class="book__title">
-${books[0].title}
-</div>
-<div class="book__ratings">
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star"></i>
-<i class="fas fa-star-half-alt"></i>
-</div>
-<div class="book__price">
-<span class="book__price--normal">$${books[0].originalPrice}</span> $${books[0].salePrice}
-</div>`;
-    })
-    .join("");
-  booksWrapper.innerHTML = booksHTML;
+  .map((book) => {
+    return `
+      <div class="book">
+        <figure class="book__img--wrapper">
+          <img class="book__img" src="${book.url}" alt="">
+        </figure>
+
+        <div class="book__title">
+          ${book.title}
+        </div>
+
+        <div class="book__ratings">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star-half-alt"></i>
+        </div>
+
+        <div class="book__price">
+          <span>$${book.originalPrice.toFixed(2)}</span>
+          </div>
+      </div>
+    `;
+  })
+  .join("");
+
+booksWrapper.innerHTML = booksHTML;
 }
 
+function filterBooks(event) {
+console.log(event)
+}
 setTimeout(() => {
   renderBooks();
 });
@@ -79,7 +89,7 @@ function getBooks() {
         {
           id: 6,
           title: "Rich Dad Poor Dad",
-          url: "Rich Dad Poor Dad.jpeg",
+          url: "assets/Rich Dad Poor Dad.jpeg",
           originalPrice: 70,
           salePrice: 12.5,
           rating: 5,
@@ -87,7 +97,7 @@ function getBooks() {
         {
           id: 7,
           title: "Cashflow Quadrant",
-          url: "Cashflow Quadrant.jpeg",
+          url: "assets/Cashflow Quadrant.jpeg",
           originalPrice: 11,
           salePrice: 10,
           rating: 4,
@@ -95,7 +105,7 @@ function getBooks() {
         {
           id: 8,
           title: "48 Laws of Power",
-          url: "48 Laws of Power.jpeg",
+          url: "assets/The 48 Laws of Power.jpeg",
           originalPrice: 38,
           salePrice: 17.95,
           rating: 4.5,
@@ -103,7 +113,7 @@ function getBooks() {
         {
           id: 9,
           title: "The 5 Second Rule",
-          url: "The 5 Second Rule.jpeg",
+          url: "assets/The 5 Second Rule.jpeg",
           originalPrice: 35,
           salePrice: null,
           rating: 2,
@@ -111,7 +121,7 @@ function getBooks() {
         {
           id: 10,
           title: "Your Next Five Moves",
-          url: "Your Next Five Moves.jpg",
+          url: "assets/Your Next Five Moves.jpg",
           originalPrice: 40,
           salePrice: null,
           rating: 4,
@@ -119,7 +129,7 @@ function getBooks() {
         {
           id: 11,
           title: "Mastery",
-          url: "Mastery.jpeg",
+          url: "assets/Mastery.jpeg",
           originalPrice: 30,
           salePrice: null,
           rating: 4.5,
