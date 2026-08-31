@@ -4,8 +4,18 @@ async function renderBooks(filter) {
   const books = await getBooks();
 
   console.log(filter);
-  if (filter === "LOW TO HIGH") {
-    books.sort((a, b) => a.originalprice - b.originalprice);
+  if (filter === "LOW_TO_HIGH") {
+  books.sort((a, b) => a.originalPrice - b.originalPrice);
+}
+  else if (filter === "HIGH_TO_LOW") {
+    books.sort((a, b) => b.originalPrice - a.originalPrice);
+  } 
+  else if (filter === "RATING") {
+    books.sort((a, b) => b.rating - a.rating);
+  }
+
+  if (Number.isInteger(rating)) {
+    ratingHTML += '<i class="fas fa-star-half-alt"></i>'
   }
 
   const booksHTML = books
@@ -21,11 +31,7 @@ async function renderBooks(filter) {
         </div>
 
         <div class="book__ratings">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star-half-alt"></i>
+          $(ratingsHTML(book.rating))
         </div>
 
         <div class="book__price">
@@ -37,6 +43,20 @@ async function renderBooks(filter) {
     .join("");
 
   booksWrapper.innerHTML = booksHTML;
+}
+
+function ratingsHTML(rating) {
+let ratingHTML = '';
+  let rating = 4.5;
+
+  for (let i = 0; i < Math.floor(4.5); ++i) {
+    ratingHTML += '<i class="fas fa-star"></i>'
+  }
+
+  if (!Number.isInteger(rating)) {
+  ratingHTML += '<i class="fas fa-star-half-alt"></i>';
+}
+  return ratingHTML;
 }
 
 function filterBooks(event) {
