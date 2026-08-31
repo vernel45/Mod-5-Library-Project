@@ -14,10 +14,7 @@ async function renderBooks(filter) {
     books.sort((a, b) => b.rating - a.rating);
   }
 
-  if (Number.isInteger(rating)) {
-    ratingHTML += '<i class="fas fa-star-half-alt"></i>'
-  }
-
+  
   const booksHTML = books
     .map((book) => {
       return `
@@ -31,7 +28,7 @@ async function renderBooks(filter) {
         </div>
 
         <div class="book__ratings">
-          $(ratingsHTML(book.rating))
+         ${ratingsHTML(book.rating)}
         </div>
 
         <div class="book__price">
@@ -46,16 +43,16 @@ async function renderBooks(filter) {
 }
 
 function ratingsHTML(rating) {
-let ratingHTML = '';
+let ratingHTML = "";
   let rating = 4.5;
 
-  for (let i = 0; i < Math.floor(4.5); ++i) {
-    ratingHTML += '<i class="fas fa-star"></i>'
+  for (let i = 0; i < Math.floor(rating); ++i) {
+    ratingHTML += '<i class="fas fa-star"></i>';
   }
 
   if (!Number.isInteger(rating)) {
-  ratingHTML += '<i class="fas fa-star-half-alt"></i>';
-}
+    ratingHTML += '<i class="fas fa-star-half-alt"></i>';
+  }
   return ratingHTML;
 }
 
