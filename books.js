@@ -1,11 +1,16 @@
-async function renderBooks() {
+async function renderBooks(filter) {
   const booksWrapper = document.querySelector(".books");
 
   const books = await getBooks();
 
+  console.log(filter);
+  if (filter === "LOW TO HIGH") {
+    books.sort((a, b) => a.originalprice - b.originalprice);
+  }
+
   const booksHTML = books
-  .map((book) => {
-    return `
+    .map((book) => {
+      return `
       <div class="book">
         <figure class="book__img--wrapper">
           <img class="book__img" src="${book.url}" alt="">
@@ -28,15 +33,16 @@ async function renderBooks() {
           </div>
       </div>
     `;
-  })
-  .join("");
+    })
+    .join("");
 
-booksWrapper.innerHTML = booksHTML;
+  booksWrapper.innerHTML = booksHTML;
 }
 
 function filterBooks(event) {
-console.log(event)
+  renderBooks(event.target.value);
 }
+
 setTimeout(() => {
   renderBooks();
 });
