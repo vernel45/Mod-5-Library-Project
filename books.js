@@ -1,13 +1,15 @@
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector(".books");
 
+   document.body.classList += ' books__loading'
   const books = await getBooks();
+  document.body.classList.remove(' books__loading')
 
   console.log(filter);
   if (filter === "LOW_TO_HIGH") {
-    books.sort((a, b) => a.originalPrice - b.originalPrice);
+    books.sort((a, b) => ( a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice));
   } else if (filter === "HIGH_TO_LOW") {
-    books.sort((a, b) => b.originalPrice - a.originalPrice);
+    books.sort((a, b) => ( b.salePrice || b.originalPrice) - (a.originalPrice || a.originalPrice));
   } else if (filter === "RATING") {
     books.sort((a, b) => b.rating - a.rating);
   }
@@ -28,10 +30,8 @@ async function renderBooks(filter) {
          ${ratingsHTML(book.rating)}
         </div>
 <div class="book__price">
-                <span class="book__price--normal">$59.95</span> $14.95
-                    <span>$${book.originalPrice.toFixed(2)}</span>
-                    ${priceHTML(book.originalPrice, book.salePrice)}
-          </div>
+  ${priceHTML(book.originalPrice, book.salePrice)}
+</div>
       </div>`;
     })
     .join("");
@@ -41,9 +41,15 @@ async function renderBooks(filter) {
 
 function priceHTML(originalPrice, salePrice) {
   if (!salePrice) {
-    return `${originalPrice}`
+    return `$${originalPrice.toFixed(2)}`
   }
-console.log(originalPrice, salePrice)
+
+  return `
+    <span class="book__price--normal">
+      $${originalPrice.toFixed(2)}
+    </span>
+    $${salePrice.toFixed(2)}
+  `
 }
 
 function ratingsHTML(rating) {
@@ -70,7 +76,7 @@ setTimeout(() => {
 
 // FAKE DATA
 function getBooks() {
-  return new Promise((resolve) => {
+ return new Promise((resolve) => {
     setTimeout(() => {
       resolve([
         {
