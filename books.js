@@ -3,7 +3,7 @@ async function renderBooks(filter) {
 
    document.body.classList += ' books__loading'
   const books = await getBooks();
-  document.body.classList.remove(' books__loading')
+  document.body.classList.remove('it books__loading')
 
   console.log(filter);
   if (filter === "LOW_TO_HIGH") {
